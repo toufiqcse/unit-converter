@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+.main-content{
+    width: 50%;
+    margin: auto;
+    background: blue;
+}
+.unit-box{
+    max-width: 300px;
+    max-width: auto;
+    border-radius: 5px;
+    border: 2px solid red !important;
+    background: #eee;
+}
+
+.unit-box img{
+    width: 100%;
+}
+.hero-section{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}

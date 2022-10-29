@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Unit Converter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <style>
+        :root{
+            --blue: #0d6efd;
+            --dark-rgb: 33, 37, 41;
+            --highlight-bg: #fff3cd;
+            --body-color: #212529;
+            --gray-500: #adb5bd;
+            --gray-600: #6c757d;
+            --gray-700: #495057;
+        }
+        body{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            background: var(--body-color);
+        
+        }
+        #input,
+        #result{
+            font-size: 20px;
+            font-weight: 600;
+            font-family: nunito, sans-serif;
+        }
+        option{
+            font-size: 20px;
+            font-weight: 600;
+        }
+        p{
+            font-size: 20px;
+            color: var(--highlight-bg);
+            font-weight: 700;
+        }
+       
+        .title{
+            border-bottom: 2px solid #eee;
+            
+        }
+        .converter-title{
+            text-align: center;
+            margin: 13px 0px;
+            font-size: 40px;
+            
+        
+        }
+        
+        .my-auto {
+        margin-top: auto !important;
+        margin-bottom: auto !important;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+
+	<div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 content">
+                <div class="card my-5">
+                    <div class="card-body">
+                      
+                         <div class="title mb-5">
+                             <h1 class="converter-title">Length Converter</h1>
+                         </div>  
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="text-center">Select Unit</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- select -->
+                        <div class="col-md-6">
+                            <p class="text-center text-danger">From</p>
+                            <select  id="inputType" class="mb-5 text-center  form-select p-2">
+                                <option value="kilometer">kilometer</option>
+                                <option value="meter">Meter</option>
+                                <option value="Centimeter">Centimeter</option>
+                                <option value="Milimeter">Milimeter</option>
+                                <option value="Micrometer">Micrometer</option>
+                                <option value="Nanometer">Nanometer</option>
+                                <option value="Mile">Mile</option>                              
+                                <option value="Yard">Yard</option>
+                                <option value="Foot">Foot</option>
+                                <option value="Inch">Inch</option>
+                                <option value="Nautical mile">Nautical mile</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="text-center text-danger">To</p>
+                            <select  id="resultType" class="mb-5 text-center  form-select p-2">
+                                <option value="kilometer">kilometer</option>
+                                <option value="meter">Meter</option>
+                                <option value="Centimeter">Centimeter</option>
+                                <option value="Milimeter">Milimeter</option>
+                                <option value="Micrometer">Micrometer</option>
+                                <option value="Nanometer">Nanometer</option>
+                                <option value="Mile">Mile</option>                              
+                                <option value="Yard">Yard</option>
+                                <option value="Foot">Foot</option>
+                                <option value="Inch">Inch</option>
+                                <option value="Nautical mile">Nautical mile</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 text-center"><input class="form-control mb-3 p-3" type="number" placeholder="Input" id="input" >
+                        </div>
+                        <div class="col-md-6 text-center"> <input class="form-control mb-3 p-3" type="text" placeholder="Result" id="result">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+
+
+    <script>
+        var input = document.getElementById('input');
+        var result = document.getElementById('result');
+        var inputType = document.getElementById('inputType');
+        var resultType = document.getElementById('resultType');
+        var option_from,option_to;
+
+        // now add listener
+        input.addEventListener("keyup",myResult);
+        inputType.addEventListener("change",myResult);
+        resultType.addEventListener("change",myResult);
+
+        // taking initial value
+        option_from = inputType.value;
+        option_to   = resultType.value;
+
+
+        function myResult(){
+
+
+        // when we change the input and output type vale we need to updata the 
+        // option_from and option_to
+
+            option_from = inputType.value;
+            option_to = resultType.value;
+
+
+        // Meters to others======================================
+
+            if(option_from === "meter" && option_to==="kilometer"){
+                //this is meter to kilometer formula 
+                result.value = Number(input.value) * 0.001;
+
+            }else if(option_from === "meter" && option_to==="meter"){
+                //this is meter to meter formula 
+                result.value = input.value
+            }
+            
+            else if(option_from === "meter" && option_to==="Centimeter"){
+
+                //this is meter to Centimeter formula 
+                result.value = Number(input.value) * 100;
+
+            }
+            else if(option_from === "meter" && option_to==="Milimeter"){
+
+                //this is meter to Milimeter formula 
+                result.value = Number(input.value) * 1000;
+
+            }
+            else if(option_from === "meter" && option_to==="Micrometer"){
+
+                //this is meter to Micrometer formula 
+                result.value = Number(input.value) * 1000000;
+
+            }
+            else if(option_from === "meter" && option_to==="Nanometer"){
+
+                //this is meter to Nanometer formula 
+                result.value = Number(input.value) * 1000000000;
+
+            }
+            else if(option_from === "meter" && option_to==="Mile"){
+
+                //this is meter to mile formula 
+                result.value = Number(input.value) / 1609;
+
+            }
+            else if(option_from === "meter" && option_to==="Yard"){
+
+                //this is meter to yard formula 
+                result.value = Number(input.value) * 1.0936;
+
+            }
+            else if(option_from === "meter" && option_to==="Foot"){
+
+                //this is meter to Foot formula 
+                result.value = Number(input.value) * 3.2808;
+
+            }
+            else if(option_from === "meter" && option_to==="Inch"){
+
+                //this is meter to Inch formula 
+                result.value = Number(input.value) * 39.370;
+
+            }
+            else if(option_from === "meter" && option_to==="Nautical mile"){
+
+                //this is meter to Nautical mile formula 
+                result.value = Number(input.value) / 1852;
+
+            }
+            
+            
+            
+
+            //Kilometer to others==========================================================
+
+
+            if(option_from === "kilometer" && option_to==="meter"){
+                //this is kilometer to meter formula 
+                result.value = Number(input.value) * 1000;
+                
+            } else if(option_from === "kilometer" && option_to==="kilometer"){
+                //this is kilometer to kilometer formula 
+                result.value = input.value
+            }
+
+            
+            else if(option_from === "kilometer" && option_to==="Centimeter"){
+                //this is kilometer to Centimeter formula 
+                result.value = Number(input.value) * 100000;
+
+            }
+            else if(option_from === "kilometer" && option_to==="Milimeter"){
+                //this is kilometer to Milimeter formula 
+                result.value = Number(input.value) * 1000000;
+
+            }
+            else if(option_from === "kilometer" && option_to==="Micrometer"){
+                //this is kilometer to Micrometer formula 
+                result.value = Number(input.value) * 1000000000;
+
+            }
+            else if(option_from === "kilometer" && option_to==="Nanometer"){
+                //this is kilometer to Nanometer formula 
+                result.value = Number(input.value) * 1000000000000;
+
+            }
+            else if(option_from === "kilometer" && option_to==="Mile"){
+                //this is kilometer to Mile formula 
+                result.value = Number(input.value) / 1.609;
+
+            }
+            else if(option_from === "kilometer" && option_to==="Yard"){
+                     //this is kilometer to yard formula 
+                result.value = Number(input.value) * 1094;
+            }
+            else if(option_from === "kilometer" && option_to==="Foot"){
+                     //this is kilometer to Foot  formula 
+                result.value = Number(input.value) * 3281;
+            }
+            
+            else if(option_from === "kilometer" && option_to==="Inch"){
+                     //this is kilometer to Inch formula 
+                result.value = Number(input.value) * 39370;
+            }
+            
+            else if(option_from === "kilometer" && option_to==="Nautical mile"){
+                     //this is kilometer to Nautical mile formula 
+                result.value = Number(input.value) / 1.852;
+            }
+            
+            
+           
+
+            //centemeterto others=========================================================
+
+
+
+            if(option_from === "Centimeter" && option_to==="kilometer"){
+                //this is Centimeter to kilometer formula 
+                result.value = Number(input.value) * 0.00001;
+
+            }else if(option_from === "Centimeter" && option_to==="meter"){
+                //this is Centimeter to meter formula 
+                result.value = Number(input.value) * 0.01;
+            }
+            
+            else if(option_from === "Centimeter" && option_to==="Centimeter"){
+                //this is Centimeter to Centimeter formula 
+                result.value = input.value
+            }
+            else if(option_from === "Centimeter" && option_to==="Milimeter"){
+                //this is Centimeter to milimeter formula 
+                result.value = Number(input.value)  * 10;
+            }
+            
+            else if(option_from === "Centimeter" && option_to==="Micrometer"){
+                //this is Centimeter to  micrometer formula 
+                result.value = Number(input.value)  * 10000;
+            }
+            else if(option_from === "Centimeter" && option_to==="Nanometer"){
+                //this is Centimeter to  nanometer formula 
+                result.value = Number(input.value)  * 10000000;
+            }
+            
+            else if(option_from === "Centimeter" && option_to==="Mile"){
+                //this is Centimeter to mile formula 
+                result.value = Number(input.value)  / 160900;
+            }
+            else if(option_from === "Centimeter" && option_to==="Yard"){
+                //this is Centimeter to yard formula 
+                result.value = Number(input.value) / 91.44;
+            }
+            else if(option_from === "Centimeter" && option_to==="Foot"){
+                //this is Centimeter to foot formula 
+                result.value = Number(input.value) / 30.48;
+            }
+            else if(option_from === "Centimeter" && option_to==="Inch"){
+                //this is Centimeter to inch formula 
+                result.value = Number(input.value) / 2.54;
+            }
+            else if(option_from === "Centimeter" && option_to==="Nautical mile"){
+                //this is Centimeter to nautical mile formula 
+                result.value = Number(input.value) / 185200;
+            }
+
+
+            //Milimeter to others=========================================================
+
+            if(option_from === "Milimeter" && option_to ==="kilometer"){
+                //this is Milimeter to kilometer formula 
+                result.value = Number(input.value) / 1000000;
+
+            }else if(option_from === "Milimeter" && option_to ==="meter"){
+                //this is Milimeter to meter formula 
+                result.value = Number(input.value) / 1000;
+            }
+            
+            else if(option_from === "Milimeter" && option_to ==="Centimeter"){
+                //this is Milimeter to Centimeter formula 
+                result.value = Number(input.value) / 10;
+            }
+            else if(option_from === "Milimeter" && option_to ==="Milimeter"){
+                //this is Milimeter to milimeter formula 
+                result.value = input.value
+            }
+            
+            else if(option_from === "Milimeter" && option_to ==="Micrometer"){
+                //this is Milimeter to  micrometer formula 
+                result.value = Number(input.value)  * 10000;
+            }
+            else if(option_from === "Milimeter" && option_to ==="Nanometer"){
+                //this is Milimeterto  nanometer formula 
+                result.value = Number(input.value)  / 1000000;
+            }
+            
+            else if(option_from === "Milimeter" && option_to ==="Mile"){
+                //this is Milimeter to mile formula 
+                result.value = Number(input.value)  / 1.609000000;
+            }
+            else if(option_from === "Milimeter" && option_to ==="Yard"){
+                //this is Milimeter to yard formula 
+                result.value = Number(input.value) / 914.4;
+            }
+            else if(option_from === "Milimeter" && option_to ==="Foot"){
+                //this is Milimeter to foot formula 
+                result.value = Number(input.value) / 304.8;
+            }
+            else if(option_from === "Milimeter" && option_to ==="Inch"){
+                //this is Milimeter to inch formula 
+                result.value = Number(input.value) / 25.4;
+            }
+            else if(option_from === "Milimeter" && option_to ==="Nautical mile"){
+                //this is Milimeter to nautical mile formula 
+                result.value = Number(input.value) / 1.852000000;
+            }
+
+
+            //Micrometer to others========================================================
+
+            if(option_from === "Micrometer" && option_to === "kilometer"){
+                //this is Micrometer to kilometer formula 
+                result.value = Number(input.value) / 1000000000;
+
+            }else if(option_from === "Micrometer" && option_to === "meter"){
+                //this is Micrometer to meter formula 
+                result.value = Number(input.value) / 1000000;
+            }
+            
+            else if(option_from === "Micrometer" && option_to === "Centimeter"){
+                //this is Micrometer to Centimeter formula 
+                result.value = Number(input.value) / 1000;
+            }
+            else if(option_from === "Micrometer" && option_to === "Milimeter"){
+                //this is Micrometer to milimeter formula 
+                result.value = Number(input.value)  / 1000;              
+            } 
+            else if(option_from === "Micrometer" && option_to === "Micrometer"){
+                //this is Micrometer to  micrometer formula 
+                result.value = input.value
+            }
+            else if(option_from === "Micrometer" && option_to === "Nanometer"){
+                //this is Micrometero  nanometer formula 
+                result.value = Number(input.value)  * 1000;
+            }
+            
+            else if(option_from === "Micrometer" && option_to === "Mile"){
+                //this is Micrometer to mile formula 
+                result.value = Number(input.value)  / 1.609000000000;
+            }
+            else if(option_from === "Micrometer" && option_to === "Yard"){
+                //this is Micrometer to yard formula 
+                result.value = Number(input.value) / 914400;
+            }
+            else if(option_from === "Micrometer" && option_to ==="Foot"){
+                //this is Micrometer to foot formula 
+                result.value = Number(input.value) / 304800;
+            }
+            else if(option_from === "Micrometer" && option_to === "Inch"){
+                //this is Micrometer to inch formula 
+                result.value = Number(input.value) / 25400;
+            }
+            else if(option_from === "Micrometer" && option_to === "Nautical mile"){
+                //this is Micrometer to nautical mile formula 
+                result.value = Number(input.value) / 1.852000000000;
+            }
+
+
+            //Nanometer to others========================================================
+
+            if(option_from === "Nanometer" && option_to === "kilometer"){
+                //this is Nanometer to kilometer formula 
+                result.value = Number(input.value) / 1000000000000;
+
+            }else if(option_from === "Nanometer" && option_to === "meter"){
+                //this is Nanometer to meter formula 
+                result.value = Number(input.value) / 1000000000;
+            }
+            
+            else if(option_from === "Nanometer" && option_to === "Centimeter"){
+                //this is Nanometer to Centimeter formula 
+                result.value = Number(input.value) / 10000000;
+            }
+            else if(option_from === "Nanometer" && option_to === "Milimeter"){
+                //this is Nanometer to milimeter formula 
+                result.value = Number(input.value)  / 1000000;              
+            } 
+            else if(option_from === "Nanometer" && option_to === "Micrometer"){
+                //this is Nanometer to  micrometer formula 
+                result.value = Number(input.value)  / 10000; 
+            }
+            else if(option_from === "Nanometer" && option_to === "Nanometer"){
+                //this is Nanometero  nanometer formula 
+                result.value = input.value
+            }
+            
+            else if(option_from === "Nanometer" && option_to === "Mile"){
+                //this is Nanometer to mile formula 
+                result.value = Number(input.value)  / 1.609000000000000;
+            }
+            else if(option_from === "Nanometer" && option_to === "Yard"){
+                //this is Nanometer to yard formula 
+                result.value = Number(input.value) / 9.14400000000;
+            }
+            else if(option_from === "Nanometer" && option_to ==="Foot"){
+                //this is Nanometer to foot formula 
+                result.value = Number(input.value) / 3.04800000000;
+            }
+            else if(option_from === "Nanometer" && option_to === "Inch"){
+                //this is Nanometer to inch formula 
+                result.value = Number(input.value) / 2.540000000;
+            }
+            else if(option_from === "Nanometer" && option_to === "Nautical mile"){
+                //this is Nanometer to nautical mile formula 
+                result.value = Number(input.value) / 1.852000000000000;
+            }
+
+            //Mile to others=========================================
+
+            if(option_from === "Mile" && option_to === "kilometer"){
+                //this is Nanometer to kilometer formula 
+                result.value = Number(input.value) * 1.609;
+
+            }else if(option_from === "Mile" && option_to === "meter"){
+                //this is Nanometer to meter formula 
+                result.value = Number(input.value) * 1609;
+            }
+            
+            else if(option_from === "Mile" && option_to === "Centimeter"){
+                //this is Nanometer to Centimeter formula 
+                result.value = Number(input.value) * 160900;
+            }
+            else if(option_from === "Mile" && option_to === "Milimeter"){
+                //this is Nanometer to milimeter formula 
+                result.value = Number(input.value)  * 1.609000000;              
+            } 
+            else if(option_from === "Mile" && option_to === "Micrometer"){
+                //this is Nanometer to  micrometer formula 
+                result.value = Number(input.value)   * 1.609000000000; 
+            }
+            else if(option_from === "Mile" && option_to === "Nanometer"){
+                //this is Nanometero  nanometer formula 
+                result.value = Number(input.value)   * 1.609000000000000; 
+            }
+            
+            else if(option_from === "Mile" && option_to === "Mile"){
+                //this is Nanometer to mile formula 
+                result.value = input.value;
+            }
+            else if(option_from === "Mile" && option_to === "Yard"){
+                //this is Nanometer to yard formula 
+                result.value = Number(input.value) * 1760;
+            }
+            else if(option_from === "Mile" && option_to ==="Foot"){
+                //this is Nanometer to foot formula 
+                result.value = Number(input.value) * 5280;
+            }
+            else if(option_from === "Mile" && option_to === "Inch"){
+                //this is Nanometer to inch formula 
+                result.value = Number(input.value) * 63360;
+            }
+            else if(option_from === "Mile" && option_to === "Nautical mile"){
+                //this is Nanometer to nautical mile formula 
+                result.value = Number(input.value) / 1.151;
+            }
+
+            //Yard to others=========================================
+
+            if(option_from === "Yard" && option_to === "kilometer"){
+                //this is Nanometer to kilometer formula 
+                result.value = Number(input.value) / 1094;
+
+            }else if(option_from === "Yard" && option_to === "meter"){
+                //this is Nanometer to meter formula 
+                result.value = Number(input.value) / 1.094;
+            }
+            
+            else if(option_from === "Yard" && option_to === "Centimeter"){
+                //this is Nanometer to Centimeter formula 
+                result.value = Number(input.value) * 91.44;
+            }
+            else if(option_from === "Yard" && option_to === "Milimeter"){
+                //this is Nanometer to milimeter formula 
+                result.value = Number(input.value)  * 914.4;              
+            } 
+            else if(option_from === "Yard" && option_to === "Micrometer"){
+                //this is Nanometer to  micrometer formula 
+                result.value = Number(input.value)   * 914400; 
+            }
+            else if(option_from === "Yard" && option_to === "Nanometer"){
+                //this is Nanometero  nanometer formula 
+                result.value = Number(input.value)   * 9.14400000000; 
+            }
+            
+            else if(option_from === "Yard" && option_to === "Mile"){
+                //this is Nanometer to mile formula 
+                result.value = Number(input.value)   / 1760; 
+            }
+            else if(option_from === "Yard" && option_to === "Yard"){
+                //this is Nanometer to yard formula 
+                result.value = input.value;
+            }
+            else if(option_from === "Yard" && option_to ==="Foot"){
+                //this is Nanometer to foot formula 
+                result.value = Number(input.value) * 3;
+            }
+            else if(option_from === "Yard" && option_to === "Inch"){
+                //this is Nanometer to inch formula 
+                result.value = Number(input.value) * 36;
+            }
+            else if(option_from === "Yard" && option_to === "Nautical mile"){
+                //this is Nanometer to nautical mile formula 
+                result.value = Number(input.value) / 2025;
+            }
+
+            
+            //Foot to others=========================================
+
+            if(option_from === "Foot" && option_to === "kilometer"){
+                //this is Nanometer to kilometer formula 
+                result.value = Number(input.value) / 3281;
+
+            }else if(option_from === "Foot" && option_to === "meter"){
+                //this is Nanometer to meter formula 
+                result.value = Number(input.value) / 3.281;
+            }
+            
+            else if(option_from === "Foot" && option_to === "Centimeter"){
+                //this is Nanometer to Centimeter formula 
+                result.value = Number(input.value) * 30.48;
+            }
+            else if(option_from === "Foot" && option_to === "Milimeter"){
+                //this is Nanometer to milimeter formula 
+                result.value = Number(input.value)  * 304.8;              
+            } 
+            else if(option_from === "Foot" && option_to === "Micrometer"){
+                //this is Nanometer to  micrometer formula 
+                result.value = Number(input.value)   * 304800; 
+            }
+            else if(option_from === "Foot" && option_to === "Nanometer"){
+                //this is Nanometero  nanometer formula 
+                result.value = Number(input.value)   * 3.04800000000; 
+            }
+            
+            else if(option_from === "Foot" && option_to === "Mile"){
+                //this is Nanometer to mile formula 
+                result.value = Number(input.value)   / 5280; 
+            }
+            else if(option_from === "Foot" && option_to === "Yard"){
+                //this is Nanometer to yard formula 
+                result.value = Number(input.value) / 3;
+            }
+            else if(option_from === "Foot" && option_to ==="Foot"){
+                //this is Nanometer to foot formula 
+                result.value = input.value;
+            }
+            else if(option_from === "Foot" && option_to === "Inch"){
+                //this is Nanometer to inch formula 
+                result.value = Number(input.value) * 12;
+            }
+            else if(option_from === "Foot" && option_to === "Nautical mile"){
+                //this is Nanometer to nautical mile formula 
+                result.value = Number(input.value) / 6076;
+            }
+
+
+
+            //Inch to others=========================================
+
+            if(option_from === "Inch" && option_to === "kilometer"){
+                //this is Nanometer to kilometer formula 
+                result.value = Number(input.value) / 39370;
+
+            }else if(option_from === "Inch" && option_to === "meter"){
+                //this is Nanometer to meter formula 
+                result.value = Number(input.value) / 39.37;
+            }
+            
+            else if(option_from === "Inch" && option_to === "Centimeter"){
+                //this is Nanometer to Centimeter formula 
+                result.value = Number(input.value) * 2.54;
+            }
+            else if(option_from === "Inch" && option_to === "Milimeter"){
+                //this is Nanometer to milimeter formula 
+                result.value = Number(input.value)  * 25.4;              
+            } 
+            else if(option_from === "Inch" && option_to === "Micrometer"){
+                //this is Nanometer to  micrometer formula 
+                result.value = Number(input.value)   * 25400; 
+            }
+            else if(option_from === "Inch" && option_to === "Nanometer"){
+                //this is Nanometero  nanometer formula 
+                result.value = Number(input.value)   * 2.540000000; 
+            }
+            
+            else if(option_from === "Inch" && option_to === "Mile"){
+                //this is Nanometer to mile formula 
+                result.value = Number(input.value)   / 63360; 
+            }
+            else if(option_from === "Inch" && option_to === "Yard"){
+                //this is Nanometer to yard formula 
+                result.value = Number(input.value) / 366;
+            }
+            else if(option_from === "Inch" && option_to ==="Foot"){
+                //this is Nanometer to foot formula 
+               
+                result.value = Number(input.value) / 12;
+            }
+            else if(option_from === "Inch" && option_to === "Inch"){
+                //this is Nanometer to inch formula 
+                result.value = input.value;
+            }
+            else if(option_from === "Inch" && option_to === "Nautical mile"){
+                //this is Nanometer to nautical mile formula 
+                result.value = Number(input.value) / 72910;
+            }
+
+
+
+            //Nautical mile to others=========================================
+
+            if(option_from === "Nautical mile" && option_to === "kilometer"){
+                //this is Nanometer to kilometer formula 
+                result.value = Number(input.value) * 1.852;
+
+            }else if(option_from === "Nautical mile" && option_to === "meter"){
+                //this is Nanometer to meter formula 
+                result.value = Number(input.value) * 1852;
+            }
+            
+            else if(option_from === "Nautical mile" && option_to === "Centimeter"){
+                //this is Nanometer to Centimeter formula 
+                result.value = Number(input.value) * 185200;
+            }
+            else if(option_from === "Nautical mile" && option_to === "Milimeter"){
+                //this is Nanometer to milimeter formula 
+                result.value = Number(input.value)  * 1.852000000;              
+            } 
+            else if(option_from === "Nautical mile" && option_to === "Micrometer"){
+                //this is Nanometer to  micrometer formula 
+                result.value = Number(input.value)   * 1.852000000000; 
+            }
+            else if(option_from === "Nautical mile" && option_to === "Nanometer"){
+                //this is Nanometero  nanometer formula 
+                result.value = Number(input.value)   * 1.852000000000000; 
+            }
+            
+            else if(option_from === "Nautical mile" && option_to === "Mile"){
+                //this is Nanometer to mile formula 
+                result.value = Number(input.value)   * 1.151; 
+            }
+            else if(option_from === "Nautical mile" && option_to === "Yard"){
+                //this is Nanometer to yard formula 
+                result.value = Number(input.value) * 2025;
+            }
+            else if(option_from === "Nautical mile" && option_to ==="Foot"){
+                //this is Nanometer to foot formula 
+               
+                result.value = Number(input.value)  * 6076;
+            }
+            else if(option_from === "Nautical mile" && option_to === "Inch"){
+                //this is Nanometer to inch formula 
+                
+                result.value = Number(input.value) * 72910;
+            }
+            else if(option_from === "Nautical mile" && option_to === "Nautical mile"){
+                //this is Nanometer to nautical mile formula 
+                result.value = input.value;
+            }
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
