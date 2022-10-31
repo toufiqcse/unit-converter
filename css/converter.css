@@ -3,24 +3,25 @@
     box-sizing: border-box;
     padding: 0;
 }
-.main-content{
-    width: 50%;
-    margin: auto;
-    background: blue;
+.card-body a{
+    color: #212529;
+    text-decoration: none
 }
-.unit-box{
-    max-width: 300px;
-    max-width: auto;
-    border-radius: 5px;
-    border: 2px solid red !important;
-    background: #eee;
-}
-
-.unit-box img{
+.card-body img{
     width: 100%;
+    height: 140px;
 }
-.hero-section{
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
+h2{
+    font-weight: 600;
+}
+  h4{
+    font-weight: 500;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: nunito;
+}
+.card-body:hover{
+ background-color: #eee;
+ box-shadow: 0 0 11px rgba(33,33,33,.2); 
+ transition: all 0.3s ease-in-out;
 }

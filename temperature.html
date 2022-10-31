@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Unit Converter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <style>
+        :root{
+            --blue: #0d6efd;
+            --dark-rgb: 33, 37, 41;
+            --highlight-bg: #fff3cd;
+            --body-color: #212529;
+            --gray-500: #adb5bd;
+            --gray-600: #6c757d;
+            --gray-700: #495057;
+        }
+        body{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            background: var(--body-color);
+        
+        }
+        #input,
+        #result{
+            font-size: 20px;
+            font-weight: 600;
+            font-family: nunito, sans-serif;
+        }
+        option{
+            font-size: 20px;
+            font-weight: 600;
+        }
+        p{
+            font-size: 20px;
+            color: var(--highlight-bg);
+            font-weight: 700;
+        }
+       
+        .title{
+            border-bottom: 2px solid #eee;
+            
+        }
+        .converter-title{
+            text-align: center;
+            margin: 13px 0px;
+            font-size: 40px;
+            
+        
+        }
+        
+        .my-auto {
+        margin-top: auto !important;
+        margin-bottom: auto !important;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+
+	<div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 content">
+                <div class="card my-2">
+                    <div class="card-body ">
+                      
+                         <div class="title mb-3">
+                             <h1 class="converter-title">Temperature Converter</h1>
+                         </div>  
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="text-center">Select Unit</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- select -->
+                        <div class="col-md-6">
+                            <p class="text-center text-danger">From</p>
+                            <select  id="inputType" class="mb-5 text-center  form-select p-2">
+                                <option value="Celcius">Celcius</option>
+                                <option value="Farenheight">Farenheight</option>
+                                <option value="Kelvin">Kelvin</option>
+                               
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="text-center text-danger">To</p>
+                            <select  id="resultType" class="mb-5 text-center  form-select p-2">
+                                <option value="Celcius">Celcius</option>
+                                <option value="Farenheight">Farenheight</option>
+                                <option value="Kelvin">Kelvin</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 text-center"><input class="form-control mb-3 p-3" type="number" placeholder="Input" id="input" >
+                        </div>
+                        <div class="col-md-6 text-center"> <input class="form-control mb-3 p-3" type="text" placeholder="Result" id="result">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+
+
+    <script>
+        var input = document.getElementById('input');
+        var result = document.getElementById('result');
+        var inputType = document.getElementById('inputType');
+        var resultType = document.getElementById('resultType');
+        var option_from,option_to;
+
+        // now add listener
+        input.addEventListener("keyup",myResult);
+        inputType.addEventListener("change",myResult);
+        resultType.addEventListener("change",myResult);
+
+        // taking initial value
+        option_from = inputType.value;
+        option_to   = resultType.value;
+
+
+        function myResult(){
+
+
+        // when we change the input and output type vale we need to updata the 
+        // option_from and option_to
+
+            option_from = inputType.value;
+            option_to = resultType.value;
+
+
+        // Celcius to others======================================
+
+            if(option_from === "Celcius" && option_to==="Farenheight"){
+                //this is  Celcius to farenheight formula 
+                result.value = Number(input.value) * 9/5 + 32;
+
+            }else if(option_from === "Celcius" && option_to==="Kelvin"){
+                //this is  Celcius to kelvin formula 
+                result.value = Number(input.value) + 273.15;
+            }
+            
+            else if(option_from === "Celcius" && option_to==="Celcius"){
+
+                //this is  Celcius to Centimeter formula 
+                result.value = input.value
+
+            }
+
+
+            // // Farenheight to others======================================
+
+            if(option_from === "Farenheight" && option_to==="Farenheight"){
+                //this is  Celcius to farenheight formula Farenheight
+                result.value = input.value
+
+            }else if(option_from === "Farenheight" && option_to==="Kelvin"){
+                //this is  Celcius to kelvin formula 
+                result.value = Number((input.value) - 32) * 5/9  + 273.15;
+            }
+            
+            else if(option_from === "Farenheight" && option_to==="Celcius"){
+
+                //this is  Celcius to Centimeter formula 
+                result.value = Number((input.value) - 32) * 5/9;
+
+            }
+
+
+            // // Kelvin to others======================================
+
+            if(option_from === "Kelvin" && option_to==="Farenheight"){
+                //this is  Kelvin to farenheight formula Farenheight
+                result.value = Number((input.value) - 273.15) * 9/5 + 32;
+
+            }else if(option_from === "Kelvin" && option_to==="Kelvin"){
+                //this is  Kelvin to kelvin formula 
+                result.value = input.value
+            }
+            
+            else if(option_from === "Kelvin" && option_to==="Celcius"){
+
+                //this is  Kelvin to Centimeter formula 
+                result.value = Number((input.value) - 273.15);
+
+            }
+
+
+            
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
